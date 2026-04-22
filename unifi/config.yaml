@@ -13,6 +13,7 @@ init: false
 full_access: true
 apparmor: false
 host_pid: true
+host_dbus: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
@@ -37,7 +38,7 @@ ports:
   10001/udp: 10001
   10003/udp: 10003
   11084/tcp: 11084
-  11443/tcp: 11443
+  11443/tcp: 443
 ports_description:
   443/tcp: Used for HTTPS portal and UI
   1900/udp: L2 discoverable port

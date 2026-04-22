@@ -5,6 +5,9 @@ FROM ${BUILD_FROM}
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# Inform systemd that it is running in a container
+ENV container docker
+
 # Copy local rootfs
 COPY rootfs /
 

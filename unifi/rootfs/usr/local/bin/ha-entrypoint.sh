@@ -9,6 +9,15 @@ if [ -f /data/options.json ]; then
     export UOS_SYSTEM_IP=$(jq -r '.system_ip // empty' /data/options.json)
 fi
 
+# tmpfs mounts for systemd
+echo "Mounting tmpfs directories..."
+mount -t tmpfs tmpfs /run -o mode=0755,nosuid,nodev
+mount -t tmpfs tmpfs /run/lock -o mode=0755,nosuid,nodev
+mount -t tmpfs tmpfs /tmp -o mode=1777,nosuid,nodev
+
+# Ensure cgroups are writable
+mount -o remount,rw /sys/fs/cgroup
+
 # Data persistence mapping
 # UOS stores state in multiple directories. 
 # We must ensure these are symlinked to the HA /data partition.
