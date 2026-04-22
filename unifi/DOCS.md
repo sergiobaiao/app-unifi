@@ -158,7 +158,7 @@ you must use the `--privileged` flag and mount the host's cgroups:
 
 ```bash
 docker build -t unifi-test ./unifi
-docker run -it --rm --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:rw unifi-test
+docker run -it --rm --privileged --cgroupns host -v /sys/fs/cgroup:/sys/fs/cgroup:rw unifi-test
 ```
 
 ## Support

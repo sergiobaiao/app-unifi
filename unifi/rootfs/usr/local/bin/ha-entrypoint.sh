@@ -10,13 +10,17 @@ if [ -f /data/options.json ]; then
 fi
 
 # tmpfs mounts for systemd
-echo "Mounting tmpfs directories..."
+echo "Preparing tmpfs directories..."
+mkdir -p /run /run/lock /tmp
 mount -t tmpfs tmpfs /run -o mode=0755,nosuid,nodev
 mount -t tmpfs tmpfs /run/lock -o mode=0755,nosuid,nodev
 mount -t tmpfs tmpfs /tmp -o mode=1777,nosuid,nodev
 
-# Ensure cgroups are writable
-mount -o remount,rw /sys/fs/cgroup
+# Ensure cgroups are accessible
+if [ -d /sys/fs/cgroup ]; then
+    echo "Ensuring cgroups are writable..."
+    mount -o remount,rw /sys/fs/cgroup 2>/dev/null || true
+fi
 
 # Data persistence mapping
 # UOS stores state in multiple directories. 
