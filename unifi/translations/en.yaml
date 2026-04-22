@@ -10,7 +10,6 @@ configuration:
       Manually specify the IP address or hostname that UniFi devices
       should use to "inform" (report back) to the controller.
 network:
-  443/tcp: Used for HTTPS portal and UI
   1900/udp: L2 discoverable port
   3478/udp: Used for STUN
   5005/tcp: RTP control protocol

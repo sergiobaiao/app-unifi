@@ -10,7 +10,6 @@ configuration:
       Ręcznie określ adres IP lub nazwę hosta, której urządzenia UniFi
       powinny używać do raportowania ("inform") do kontrolera.
 network:
-  443/tcp: Używany dla portalu HTTPS i interfejsu użytkownika
   1900/udp: L2 wykrywalny port
   3478/udp: Używany dla STUN
   5005/tcp: Protokół sterowania RTP

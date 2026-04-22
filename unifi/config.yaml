@@ -21,7 +21,6 @@ backup: cold
 map:
   - backup:rw
 ports:
-  443/tcp: 443
   1900/udp: null
   3478/udp: 3478
   5005/tcp: 5005
@@ -40,7 +39,6 @@ ports:
   11084/tcp: 11084
   11443/tcp: 11443
 ports_description:
-  443/tcp: Used for HTTPS portal and UI
   1900/udp: L2 discoverable port
   3478/udp: Used for STUN
   5005/tcp: RTP control protocol
