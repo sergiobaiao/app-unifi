@@ -1,4 +1,4 @@
-# Home Assistant Community App: UniFi Network Application
+# Home Assistant Community App: UniFi OS Server
 
 [![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
@@ -18,22 +18,22 @@
 
 [![Support Frenck on Patreon][patreon-shield]][patreon]
 
-The UniFi Network Application allows you to manage your UniFi network
+The UniFi OS Server allows you to manage your UniFi network
 using a web browser.
 
-![The UniFi Network Application app](images/screenshot.jpg)
+![The UniFi OS Server app](images/screenshot.jpg)
 
 ## About
 
-This app runs Ubiquiti Networks' UniFi Network Application software, which
+This app runs Ubiquiti Networks' UniFi OS Server software, which
 allows you to manage your UniFi network via the web browser. The app
 provides a single-click installation and run solution for Home Assistant,
 allowing users to get their network up, running, and updated, easily.
 
-**Note:** The standalone UniFi Network Application is approaching end-of-life.
-Ubiquiti is transitioning to UniFi OS Server, which does not translate to a
-Docker/Home Assistant app. There is no upgrade path from this app to UniFi OS
-Server. See the [documentation][docs] for details.
+**Note:** This app now runs UniFi OS Server. This is a major architectural 
+change from previous standalone versions and requires elevated privileges 
+(Full Access) and a manual data restoration path. 
+See the [documentation][docs] for details.
 
 [:books: Read the full app documentation][docs]
 

@@ -4,24 +4,33 @@ configuration:
     name: Log level
     description: >-
       Controls the level of log details the app provides.
-  memory_max:
-    name: Max Memory
+  system_ip:
+    name: System IP
     description: >-
-      This option allows you to change the amount of memory the UniFi Network
-      Application is allowed to consume.
-  memory_init:
-    name: Initial Memory
-    description: >-
-      This option allows you to change the amount of memory the UniFi Network
-      Application will initially reserve/consume when starting.
+      Manually specify the IP address or hostname that UniFi devices
+      should use to "inform" (report back) to the controller.
 network:
+  53/udp: DNS Server
+  67/udp: DHCP Server
   161/udp: Used for SNMP Access
+  443/tcp: Used for HTTPS portal and UI
+  546/udp: DHCPv6 Client
+  547/udp: DHCPv6 Server
   1900/udp: L2 discoverable port
   3478/udp: Used for STUN
+  5005/tcp: RTP control protocol
   5514/udp: Used for remote syslog debugging
+  5671/tcp: AQMPS
   6789/tcp: Used for UniFi mobile speed test
   8080/tcp: Used for device and controller communication
-  8443/tcp: Used for controller web interface and API
+  8443/tcp: Used for UniFi OS Server interface
+  8444/tcp: Secure Portal for Hotspot
   8843/tcp: Used for HTTPS portal redirection
-  8880/tcp: Used for HTTP portal redirection
+  8880/tcp: Used for Hotspot portal redirection (HTTP)
+  8881/tcp: Used for Hotspot portal redirection (HTTP)
+  8882/tcp: Used for Hotspot portal redirection (HTTP)
+  9543/tcp: UniFi Identity Hub
   10001/udp: Used for device discovery
+  10003/udp: Used for device discovery
+  11084/tcp: UniFi Site Supervisor
+  11443/tcp: Primary UniFi OS management interface

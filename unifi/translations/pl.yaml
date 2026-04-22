@@ -1,27 +1,36 @@
 ---
 configuration:
   log_level:
-    name: Log level
+    name: Poziom logowania
     description: >-
-      Kontroluje poziom szczegółowości logów, jaki zapewnia dodatek.
-  memory_max:
-    name: Max Memory
+      Kontroluje poziom szczegółowości logów, jaki zapewnia aplikacja.
+  system_ip:
+    name: IP systemu
     description: >-
-      Ta opcja pozwala na zmianę ilości pamięci, którą może używać
-      aplikacja UniFi Network.
-  memory_init:
-    name: Initial Memory
-    description: >-
-      Ta opcja pozwala zmienić ilość pamięci, którą aplikacja UniFi
-      Network będzie rezerwować/używać przy starcie.
+      Ręcznie określ adres IP lub nazwę hosta, której urządzenia UniFi
+      powinny używać do raportowania ("inform") do kontrolera.
 network:
+  53/udp: Serwer DNS
+  67/udp: Serwer DHCP
   161/udp: Używany dla dostępu po SNMP
+  443/tcp: Używany dla portalu HTTPS i interfejsu użytkownika
+  546/udp: Klient DHCPv6
+  547/udp: Serwer DHCPv6
   1900/udp: L2 wykrywalny port
   3478/udp: Używany dla STUN
+  5005/tcp: Protokół sterowania RTP
   5514/udp: Używany do zdalnego debugowania syslogu
+  5671/tcp: AQMPS
   6789/tcp: Używany do testu prędkości UniFi mobile
   8080/tcp: Używany do komunikacji urządzeń z kontrolerem
-  8443/tcp: Używany do interfejsu webowego kontrolera i API
+  8443/tcp: Używany do interfejsu aplikacji sieciowej UniFi
+  8444/tcp: Bezpieczny portal dla Hotspotu
   8843/tcp: Używany do przekierowania na portal po HTTPS
-  8880/tcp: Używany do przekierowania na portal po HTTP
+  8880/tcp: Używany do przekierowania na portal Hotspot (HTTP)
+  8881/tcp: Używany do przekierowania na portal Hotspot (HTTP)
+  8882/tcp: Używany do przekierowania na portal Hotspot (HTTP)
+  9543/tcp: UniFi Identity Hub
   10001/udp: Używany do wykrywania urządzeń
+  10003/udp: Używany do wykrywania urządzeń
+  11084/tcp: UniFi Site Supervisor
+  11443/tcp: Główny interfejs zarządzania UniFi OS

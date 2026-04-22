@@ -1,6 +1,6 @@
-# Home Assistant Community App: UniFi Network Application
+# Home Assistant Community App: UniFi OS Server
 
-This app runs Ubiquiti Networks' UniFi Network Application software, which
+This app runs Ubiquiti Networks' UniFi OS Server software, which
 allows you to manage your UniFi network via the web browser. The app
 provides a single-click installation and run solution for Home Assistant,
 allowing users to get their network up, running, and updated, easily.
@@ -16,7 +16,7 @@ comparison to installing any other Home Assistant app.
    [![Open this app in your Home Assistant instance.][app-badge]][app]
 
 1. Click the "Install" button to install the app.
-1. Check the logs of the "UniFi Network Application" to see if everything went
+1. Check the logs of the "UniFi OS Server" to see if everything went
    well.
 1. Click the "OPEN WEB UI" button, and follow the initial wizard.
 1. After completing the wizard, log in with the credentials just created.
@@ -34,8 +34,7 @@ Example app configuration, with all available options:
 
 ```yaml
 log_level: info
-memory_max: 2048
-memory_init: 512
+system_ip: 192.168.1.10
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
@@ -58,26 +57,34 @@ more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
 you are troubleshooting.
 
-### Option: `memory_max`
+### Option: `system_ip`
 
-This option allows you to change the amount of memory the UniFi Network
-Application is allowed to consume. By default, this is limited to 256 MB.
-You might want to increase this, in order to reduce CPU load or reduce this,
-in order to optimize your system for lower memory usage.
+This option allows you to manually specify the IP address or hostname that
+UniFi devices should use to "inform" (report back) to the controller. This
+is equivalent to setting the `UOS_SYSTEM_IP` environment variable in the 
+underlying container.
 
-This option takes the number of Megabyte, for example, the default is 256.
+## UniFi OS Server Migration (IMPORTANT)
 
-### Option: `memory_init`
+This app now runs **UniFi OS Server** (based on `lemker/unifi-os-server`). This
+is a major architectural change that replaces the standalone application with
+a systemd-based environment containing its own management layer, PostgreSQL,
+and MongoDB services.
 
-This option allows you to change the amount of memory the UniFi Network
-Application will initially reserve/consume when starting. By default,
-this is limited to 128MB.
-
-This option takes the number of Megabyte, for example, the default is 128.
+### Breaking Changes:
+- **Data Migration:** Existing databases from the standalone application are 
+  **NOT** automatically migrated. You **MUST** export a backup (`.unf` file) 
+  from your old installation before upgrading, and then restore it during the 
+  initial setup of UniFi OS.
+- **Privileges:** This add-on now requires "Full Access" / "Privileged" mode 
+  to support `systemd` and its internal services.
+- **Resource Usage:** UniFi OS Server runs multiple services (PostgreSQL, 
+  RabbitMQ, MongoDB, unifi-core) and will consume more memory and CPU than 
+  the previous standalone version.
 
 ## Automated backups
 
-The UniFi Network Application ships with an automated backup feature. This
+The UniFi OS Server ships with an automated backup feature. This
 feature works but has been adjusted to put the created backups in a different
 location.
 
@@ -96,12 +103,11 @@ you can manually adopt a device by following these steps:
 
 ## Future of this app
 
-**The standalone UniFi Network Application is approaching end-of-life.**
-Ubiquiti is transitioning to UniFi OS Server, a multi-container architecture
-based on podman and systemd that does not translate to a Docker/Home Assistant
-app. This app will continue to work as long as Ubiquiti ships the standalone
-application, but there is no upgrade path from this app to UniFi OS Server.
-Users planning long-term should consider migrating to a dedicated machine or VM.
+**The standalone UniFi Network Application has reached end-of-life.**
+Ubiquiti has transitioned to UniFi OS Server. This app has been updated
+to provide a single-container integration for UniFi OS Server (using 
+`systemd` internally), which requires elevated privileges and a manual 
+data restoration path from previous versions.
 
 ## Known issues and limitations
 
@@ -119,7 +125,7 @@ Users planning long-term should consider migrating to a dedicated machine or VM.
 
   This is a known issue, however, the app functions normally.
 
-- Due to security policies in the UniFi Network Application software, it is
+- Due to security policies in the UniFi OS Server software, it is
   currently impossible to add the UniFI web interface to your Home Assistant
   frontend using a `panel_iframe`.
 - The broadcast feature of the EDU-type APs are currently not working with

@@ -1,27 +1,36 @@
 ---
 configuration:
   log_level:
-    name: Detalhes do log
+    name: Nível de log
     description: >-
       Controla o nível de detalhes provido pelo app para o log.
-  memory_max:
-    name: Memória máxima
+  system_ip:
+    name: IP do Sistema
     description: >-
-      Esta opção permite que você altere a quantidade máxima de memória
-      consumida pela UniFi Network Application.
-  memory_init:
-    name: Memória inicial
-    description: >-
-      Esta opção permite que você altere a quantidade máxima de memória
-      reservada/consumida na inicialização da UniFi Network Application.
+      Especifique manualmente o endereço IP ou nome de host que os dispositivos
+      UniFi devem usar para "informar" (report back) ao controlador.
 network:
+  53/udp: Servidor DNS
+  67/udp: Servidor DHCP
   161/udp: Utilizado para acesso SNMP
+  443/tcp: Utilizado para portal HTTPS e interface de usuário
+  546/udp: Cliente DHCPv6
+  547/udp: Servidor DHCPv6
   1900/udp: L2 discoverable port
   3478/udp: Utilizado para STUN
+  5005/tcp: Protocolo de controle RTP
   5514/udp: Utilizado para depuração remota do syslog
-  6789/tcp: Utilizado para teste de velocidade do app UniFi
-  8080/tcp: Utilizado para comunicação do controlador com dispositivos
-  8443/tcp: Utilizado para interface web e API do controlador
-  8843/tcp: Utilizado para redirecionamento HTTPS do portal
-  8880/tcp: Utilizado para redirecionamento HTTP do portal
+  5671/tcp: AQMPS
+  6789/tcp: Utilizado para teste de velocidade UniFi mobile
+  8080/tcp: Utilizado para comunicação entre dispositivos e controlador
+  8443/tcp: Utilizado para a interface do UniFi OS Server
+  8444/tcp: Portal seguro para Hotspot
+  8843/tcp: Utilizado para redirecionamento de portal HTTPS
+  8880/tcp: Utilizado para redirecionamento de portal Hotspot (HTTP)
+  8881/tcp: Utilizado para redirecionamento de portal Hotspot (HTTP)
+  8882/tcp: Utilizado para redirecionamento de portal Hotspot (HTTP)
+  9543/tcp: UniFi Identity Hub
   10001/udp: Utilizado para descoberta de dispositivos
+  10003/udp: Utilizado para descoberta de dispositivos
+  11084/tcp: UniFi Site Supervisor
+  11443/tcp: Interface de gerenciamento principal do UniFi OS
