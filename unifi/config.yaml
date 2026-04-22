@@ -20,16 +20,10 @@ backup: cold
 map:
   - backup:rw
 ports:
-  53/udp: 53
-  67/udp: 67
-  161/udp: null
   443/tcp: 443
-  546/udp: 546
-  547/udp: 547
   1900/udp: null
   3478/udp: 3478
   5005/tcp: 5005
-  5514/udp: 5514
   5671/tcp: 5671
   6789/tcp: 6789
   8080/tcp: 8080
@@ -45,16 +39,10 @@ ports:
   11084/tcp: 11084
   11443/tcp: 11443
 ports_description:
-  53/udp: DNS Server
-  67/udp: DHCP Server
-  161/udp: Used for SNMP Access
   443/tcp: Used for HTTPS portal and UI
-  546/udp: DHCPv6 Client
-  547/udp: DHCPv6 Server
   1900/udp: L2 discoverable port
   3478/udp: Used for STUN
   5005/tcp: RTP control protocol
-  5514/udp: Used for remote syslog debugging
   5671/tcp: AQMPS
   6789/tcp: Used for UniFi mobile speed test
   8080/tcp: Used for device and controller communication

@@ -10,16 +10,10 @@ configuration:
       Ręcznie określ adres IP lub nazwę hosta, której urządzenia UniFi
       powinny używać do raportowania ("inform") do kontrolera.
 network:
-  53/udp: Serwer DNS
-  67/udp: Serwer DHCP
-  161/udp: Używany dla dostępu po SNMP
   443/tcp: Używany dla portalu HTTPS i interfejsu użytkownika
-  546/udp: Klient DHCPv6
-  547/udp: Serwer DHCPv6
   1900/udp: L2 wykrywalny port
   3478/udp: Używany dla STUN
   5005/tcp: Protokół sterowania RTP
-  5514/udp: Używany do zdalnego debugowania syslogu
   5671/tcp: AQMPS
   6789/tcp: Używany do testu prędkości UniFi mobile
   8080/tcp: Używany do komunikacji urządzeń z kontrolerem
