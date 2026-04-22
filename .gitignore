@@ -1,0 +1,17 @@
+# Gemini / Speckit specific
+.gemini/
+.specify/memory/research.md
+.specify/memory/plan-*.md
+.specify/memory/*.log
+.specify/memory/temp/
+.specify/memory/contracts/
+.geminiignore
+
+# Home Assistant / Docker
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.swp
+*.bak
+*~
