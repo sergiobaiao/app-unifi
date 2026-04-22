@@ -151,6 +151,16 @@ based on the following:
 - `MINOR`: Backwards-compatible new features and enhancements.
 - `PATCH`: Backwards-compatible bugfixes and package updates.
 
+## Local Testing
+
+If you wish to build and test this app locally (outside of Home Assistant), 
+you must use the `--privileged` flag and mount the host's cgroups:
+
+```bash
+docker build -t unifi-test ./unifi
+docker run -it --rm --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:rw unifi-test
+```
+
 ## Support
 
 Got questions?
