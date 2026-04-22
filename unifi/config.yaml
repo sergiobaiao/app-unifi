@@ -38,7 +38,7 @@ ports:
   10001/udp: 10001
   10003/udp: 10003
   11084/tcp: 11084
-  11443/tcp: 443
+  11443/tcp: 11443
 ports_description:
   443/tcp: Used for HTTPS portal and UI
   1900/udp: L2 discoverable port
