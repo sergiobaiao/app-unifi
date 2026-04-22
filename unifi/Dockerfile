@@ -24,7 +24,8 @@ STOPSIGNAL SIGRTMIN+3
 
 # Health check
 HEALTHCHECK --start-period=5m \
-    CMD curl --insecure --fail https://localhost:11443 || exit 1
+    CMD curl --insecure --fail https://localhost:443 || exit 1
+
 
 # Build arguments
 ARG BUILD_ARCH

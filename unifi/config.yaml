@@ -37,7 +37,7 @@ ports:
   10001/udp: 10001
   10003/udp: 10003
   11084/tcp: 11084
-  11443/tcp: 11443
+  443/tcp: 11443
 ports_description:
   1900/udp: L2 discoverable port
   3478/udp: Used for STUN
@@ -55,7 +55,7 @@ ports_description:
   10001/udp: Used for device discovery
   10003/udp: Used for device discovery
   11084/tcp: UniFi Site Supervisor
-  11443/tcp: Primary UniFi OS management interface
+  443/tcp: Primary UniFi OS management interface
 hassio_api: true
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
