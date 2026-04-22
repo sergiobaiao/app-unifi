@@ -11,15 +11,20 @@ fi
 
 # tmpfs mounts for systemd
 echo "Preparing tmpfs directories..."
-mkdir -p /run /run/lock /tmp
+mkdir -p /run /tmp
 mount -t tmpfs tmpfs /run -o mode=0755,nosuid,nodev
+mkdir -p /run/lock
 mount -t tmpfs tmpfs /run/lock -o mode=0755,nosuid,nodev
 mount -t tmpfs tmpfs /tmp -o mode=1777,nosuid,nodev
 
-# Ensure cgroups are accessible
+# Ensure cgroups are accessible and systemd hierarchy is present
 if [ -d /sys/fs/cgroup ]; then
-    echo "Ensuring cgroups are writable..."
+    echo "Ensuring cgroups are writable and systemd hierarchy is present..."
     mount -o remount,rw /sys/fs/cgroup 2>/dev/null || true
+    if [ ! -d /sys/fs/cgroup/systemd ]; then
+        mkdir -p /sys/fs/cgroup/systemd
+        mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd 2>/dev/null || true
+    fi
 fi
 
 # Data persistence mapping
