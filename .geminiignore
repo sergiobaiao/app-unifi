@@ -1,0 +1,12 @@
+# Ignore Gemini/Speckit artifacts
+.gemini/
+.specify/memory/
+.git/
+
+# Ignore images and binaries
+images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico

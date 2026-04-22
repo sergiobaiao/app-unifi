@@ -1,11 +1,6 @@
 # Gemini / Speckit specific
 .gemini/
-.specify/memory/research.md
-.specify/memory/plan-*.md
-.specify/memory/*.log
-.specify/memory/temp/
-.specify/memory/contracts/
-.geminiignore
+.specify/
 
 # Home Assistant / Docker
 .DS_Store
